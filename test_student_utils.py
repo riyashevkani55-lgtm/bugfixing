@@ -1,0 +1,33 @@
+import unittest
+from student_utils import calculate_average, is_passing, get_grade
+
+class TestStudentUtils(unittest.TestCase):
+    def test_average_of_three_marks(self):
+        self.assertEqual(calculate_average([80, 90, 100]), 90.0)
+
+    def test_average_single_mark(self):
+        self.assertEqual(calculate_average([40]), 40.0)
+
+    def test_average_of_two_marks(self):
+        self.assertEqual(calculate_average([50, 70]), 60.0)
+
+    def test_pass_at_boundary(self):
+        self.assertTrue(is_passing(40))
+
+    def test_fail_below_boundary(self):
+        self.assertFalse(is_passing(39))
+
+    def test_pass_above_boundary(self):
+        self.assertTrue(is_passing(75))
+
+    def test_distinction(self):
+        self.assertEqual(get_grade(95), "Distinction")
+
+    def test_first(self):
+        self.assertEqual(get_grade(65), "First")
+
+    def test_second(self):
+        self.assertEqual(get_grade(50), "Second")
+
+if __name__ == "__main__":
+    unittest.main()
